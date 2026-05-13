@@ -8,12 +8,14 @@ let revendedoraAtiva = null;
 async function inicializar() {
     const params = new URLSearchParams(window.location.search);
     const ref = params.get('ref') ? params.get('ref').trim().toUpperCase() : null;
-    
+    console.log("Código de referência detectado:", ref);
     try {
         const [resProd, resRev] = await Promise.all([
             fetch('/api/airtable?tabela=PRODUTOS').then(r => r.json()),
             fetch('/api/airtable?tabela=REVENDEDORAS').then(r => r.json())
         ]);
+        console.log("Resposta produtos:", resProd);
+        console.log("Resposta revendedoras:", resRev);
 
         if (resProd.error || resRev.error) {
             console.error("Erro na API:", resProd.error || resRev.error);
