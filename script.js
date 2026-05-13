@@ -15,9 +15,6 @@ async function inicializar() {
             fetch('/api/airtable?tabela=REVENDEDORAS').then(r => r.json())
         ]);
 
-        console.log("PRODUTOS:", resProd);
-        console.log("REVENDEDORAS:", resRev);
-
         if (resProd.error || resRev.error) {
             console.error("Erro na API:", resProd.error || resRev.error);
             return;
@@ -27,6 +24,7 @@ async function inicializar() {
             id: rec.id,
             nome: rec.fields['Name'] || 'Produto',
             preco: parseFloat(String(rec.fields['Notes'] || "0").replace(',', '.')) || 0,
+            precoOriginal: parseFloat(String(rec.fields['PreçoOriginal'] || "0").replace(',', '.')) || 0,
             img: rec.fields['Attachments']?.[0]?.url || '',
             estoque: parseInt(rec.fields['Estoque']) || 0,
             categoria: rec.fields['Categoria'] || 'Geral',
@@ -41,16 +39,12 @@ async function inicializar() {
             whatsapp: String(rec.fields['PHONE NUMBER'] || '').replace(/\D/g, '')
         }));
         
-
         renderizarProdutos(produtos);
 
         if (ref) {
             const rev = revendedoras.find(r => r.codigo === ref);
-            if (rev) {
-                liberarAcesso(rev.nome);
-            }
+            if (rev) liberarAcesso(rev.nome);
         }
-
     } catch (e) { 
         console.error("Erro crítico:", e);
     } finally {
@@ -59,86 +53,47 @@ async function inicializar() {
     }
 }
 
-function liberarAcesso(nomeRevendedora) {
-    document.getElementById('tela-bloqueio').style.display = 'none';
-    document.getElementById('conteudo-principal').style.display = 'block';
-    const bannerMsg = document.getElementById('nome-revendedora-banner');
-    if (bannerMsg) {
-        bannerMsg.innerHTML = `<div class="p-2 text-center fw-bold" style="background:#f1f8f1; color:#2d5a27; font-size:0.9rem; border-bottom:1px solid #e1eee1;">
-            <i class="bi bi-person-check"></i> Você está sendo atendida(o) por: ${nomeRevendedora}
-        </div>`;
-    }
-    const modalCampanha = new bootstrap.Modal(document.getElementById('modalCampanha'));
-    modalCampanha.show();
-}
-
-function verificarAcesso() {
-    const cod = document.getElementById('input-codigo').value.trim().toUpperCase();
-    const rev = revendedoras.find(r => r.codigo === cod);
-    if (rev) {
-        revendedoraAtiva = rev;
-        liberarAcesso(rev.nome);
-    } else {
-        document.getElementById('erro-login').style.display = 'block';
-    }
-}
-
 function renderizarProdutos(lista) {
     const v = document.getElementById('vitrine');
     const vDestaques = document.getElementById('vitrine-destaque');
     const bannerPrincipal = document.getElementById('banner-principal');
-    const vPromo = document.getElementById('vitrine-promocao');
 
     if (!v) return;
 
-    // 1. Busca e exibe o banner
+    // 1. Banner
     const banner = lista.find(p => p.nome.toUpperCase() === 'BANNER');
     if (banner && banner.img && bannerPrincipal) {
         bannerPrincipal.innerHTML = `
-            <div class="px-0 m-0">
-                <img src="${banner.img}" class="img-fluid w-100" style=" height: 400px; object-fit: cover; display: block;" alt="Banner Camomila">
+            <div class="p-0 m-0">
+                <img src="${banner.img}" class="img-fluid w-100" style="height: 380px; object-fit: cover; display: block;" alt="Banner">
             </div>
         `;
     }
 
-    // 2. Filtra a lista removendo o item BANNER
     const listaFiltrada = lista.filter(p => p.nome.toUpperCase() !== 'BANNER');
     
-    // 3. Organiza destaques
-    const destaques = listaFiltrada.filter(p => p.statusCampanha !== '').sort((a, b) => {
-        const peso = (t) => {
-            const low = t.toLowerCase();
-            if (low.includes('mães')) return 1;
-            if (low.includes('lança')) return 2;
-            if (low.includes('ciclo')) return 3;
-            return 4;
-        };
-        return peso(a.statusCampanha) - peso(b.statusCampanha);
-    });
-
-    const normais = listaFiltrada.filter(p => p.statusCampanha === '');
-
+    // 2. Destaques
+    const destaques = listaFiltrada.filter(p => p.statusCampanha !== '');
     if (vDestaques) {
-        vDestaques.innerHTML = destaques.map(p => {
-            const txt = p.statusCampanha.toLowerCase();
-            const cor = txt.includes('mães') ? 'label-maes' : (txt.includes('ciclo') ? 'bg-warning text-dark' : 'bg-success');
-            const ico = txt.includes('mães') ? 'bi-heart-fill' : (txt.includes('ciclo') ? 'bi-exclamation-triangle-fill' : 'bi-stars');
-            return `
-                <div class="col-6 col-md-3 mb-3">
-                    <div class="card card-produto card-lancamento shadow-sm h-100 border-0 rounded-4 overflow-hidden">
-                        <span class="badge-especial ${cor}"><i class="bi ${ico}"></i> ${p.statusCampanha}</span>
-                        <img src="${p.img}" class="card-img-top" style="aspect-ratio:1/1; object-fit:cover; cursor:pointer;" onclick="abrirDetalhes('${p.id}')"> 
-                        <div class="card-body p-2 text-center">
-                            <h6 class="fw-bold mb-0" style="font-size:0.85rem;">${p.nome}</h6>
-                            <p class="text-success small fw-bold mb-2">R$ ${p.preco.toLocaleString('pt-br',{minimumFractionDigits:2})}</p>
-                            <button class="btn btn-success btn-sm w-100 rounded-pill fw-bold" onclick="adicionarAoCarrinho('${p.id}')">Adicionar</button>
-                        </div>
+        vDestaques.innerHTML = destaques.map(p => `
+            <div class="col-6 col-md-3 mb-3">
+                <div class="card card-produto card-lancamento shadow-sm h-100 border-0 rounded-4 overflow-hidden">
+                    <span class="badge-especial bg-success"><i class="bi bi-stars"></i> ${p.statusCampanha}</span>
+                    <img src="${p.img}" class="card-img-top" style="aspect-ratio:1/1; object-fit:cover; cursor:pointer;" onclick="abrirDetalhes('${p.id}')"> 
+                    <div class="card-body p-2 text-center">
+                        <h6 class="fw-bold mb-0" style="font-size:0.85rem;">${p.nome}</h6>
+                        ${p.precoOriginal > 0 ? `
+                            <div class="mb-1"><small class="text-muted text-decoration-line-through me-1" style="font-size:0.75rem;">R$ ${p.precoOriginal.toLocaleString('pt-br',{minimumFractionDigits:2})}</small>
+                            <span class="text-danger fw-bold">R$ ${p.preco.toLocaleString('pt-br',{minimumFractionDigits:2})}</span></div>
+                        ` : `<p class="text-success small fw-bold mb-2">R$ ${p.preco.toLocaleString('pt-br',{minimumFractionDigits:2})}</p>`}
+                        <button class="btn btn-success btn-sm w-100 rounded-pill fw-bold" onclick="adicionarAoCarrinho('${p.id}')">Adicionar</button>
                     </div>
-                </div>`;
-        }).join('');
-        vDestaques.style.display = destaques.length > 0 ? 'flex' : 'none';
+                </div>
+            </div>`).join('');
     }
 
+    // 3. Vitrine Normal
+    const normais = listaFiltrada.filter(p => p.statusCampanha === '');
     v.innerHTML = normais.map(p => `
         <div class="col-6 col-md-4 col-lg-3 mb-3">
             <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden text-center">
@@ -146,67 +101,17 @@ function renderizarProdutos(lista) {
                 <div class="card-body p-2">
                     <h6 class="fw-bold mb-0" style="font-size:0.85rem;">${p.nome}</h6>
                     <small class="text-muted d-block mb-1">${p.grama}</small>
-                    <p class="text-success small fw-bold mb-2">R$ ${p.preco.toLocaleString('pt-br',{minimumFractionDigits:2})}</p>
+                    ${p.precoOriginal > 0 ? `
+                        <div class="mb-1"><small class="text-muted text-decoration-line-through me-1" style="font-size:0.75rem;">R$ ${p.precoOriginal.toLocaleString('pt-br',{minimumFractionDigits:2})}</small>
+                        <span class="text-danger fw-bold">R$ ${p.preco.toLocaleString('pt-br',{minimumFractionDigits:2})}</span></div>
+                    ` : `<p class="text-success small fw-bold mb-2">R$ ${p.preco.toLocaleString('pt-br',{minimumFractionDigits:2})}</p>`}
                     <button class="btn btn-success btn-sm w-100 rounded-pill fw-bold" onclick="adicionarAoCarrinho('${p.id}')">Adicionar</button>
                 </div>
             </div>
         </div>`).join('');
 }
 
-function abrirDetalhes(id) {
-    const p = produtos.find(x => x.id === id);
-    if(p) {
-        document.getElementById('detalhe-img').src = p.img;
-        document.getElementById('detalhe-nome').innerText = p.nome;
-        document.getElementById('detalhe-descricao').innerText = p.descricao;
-        document.getElementById('detalhe-grama').innerText = p.grama;
-        const btnModal = document.getElementById('btn-adicionar-modal');
-        btnModal.onclick = () => {
-            adicionarAoCarrinho(p.id);
-            bootstrap.Modal.getOrCreateInstance(document.getElementById('modalDetalhes')).hide();
-        };
-        bootstrap.Modal.getOrCreateInstance(document.getElementById('modalDetalhes')).show();
-    }
-}
-
-function filtrar(cat) {
-    document.querySelectorAll('.btn-filtro').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-    renderizarProdutos(cat === 'todos' ? produtos : produtos.filter(p => p.categoria.toUpperCase() === cat.toUpperCase()));
-}
-
-function adicionarAoCarrinho(id) {
-    const p = produtos.find(x => x.id === id);
-    const item = carrinho.find(c => c.id === id);
-    if (item) { item.quantidade++; } else { carrinho.push({...p, quantidade: 1}); }
-    atualizarCarrinhoUI();
-}
-
-function removerDoCarrinho(id) {
-    carrinho = carrinho.filter(i => i.id !== id);
-    atualizarCarrinhoUI();
-}
-
-function atualizarCarrinhoUI() {
-    const count = document.getElementById('cart-count');
-    if (count) count.innerText = carrinho.reduce((a, b) => a + b.quantidade, 0);
-    const cont = document.getElementById('itens-carrinho');
-    if (!cont) return;
-    if (carrinho.length === 0) {
-        cont.innerHTML = '<p class="text-center text-muted py-3">Seu carrinho está vazio.</p>';
-        return;
-    }
-    cont.innerHTML = carrinho.map(i => `
-        <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
-            <div style="font-size:0.85rem;">
-                <strong>${i.quantidade}x</strong> ${i.nome}<br>
-                <small class="text-success fw-bold">R$ ${(i.preco * i.quantidade).toFixed(2).replace('.', ',')}</small>
-            </div>
-            <button class="btn btn-sm text-danger border-0" onclick="removerDoCarrinho('${i.id}')">
-                <i class="bi bi-trash"></i>
-            </button>
-        </div>`).join('');
-}
+// ... (Manter o restante das funções: liberarAcesso, abrirDetalhes, etc., iguais ao que você já tinha)
 
 function abrirModalCarrinho() {
     bootstrap.Modal.getOrCreateInstance(document.getElementById('modalCarrinho')).show();
