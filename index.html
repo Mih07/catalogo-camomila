@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camomila Sabonetes Artesanais - Catálogo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=3">
+    
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHW1BS4TRM"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-LHW1BS4TRM');
+    </script>
+</head>
+<body> 
+   
+     
+    <!-- Modal de Campanha<div class="modal fade" id="modalCampanha" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4 overflow-hidden">
+            <div class="modal-header border-0 position-absolute end-0" style="z-index: 10;">
+                <button type="button" class="btn-close bg-white rounded-circle p-2" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0 text-center">
+                <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=500" class="img-fluid" alt="Campanha Dia das Mães">
+                <div class="p-4 bg-white">
+                    <h3 class="fw-bold" style="font-family: 'Playfair Display', serif; color: #d4a373;">Presenteie com Amor ✨</h3>
+                    <p class="text-muted">Confira nossa seleção especial de kits artesanais para celebrar quem você ama.</p>
+                    <button class="btn btn-success w-100 py-2 fw-bold rounded-pill" data-bs-dismiss="modal">VER PRESENTES</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>     -->
+
+<div id="tela-bloqueio">
+    <div class="card-login text-center">
+        <h2 class="fw-bold mb-3" style="font-family: 'Playfair Display', serif;">Bem Vindos à Camomila✨</h2>
+        <p class="text-muted mb-4">Preparando sua vitrine de autocuidado ⏳</p>
+        <input type="password" id="input-codigo" class="form-control mb-3 text-center" placeholder="Identificando sua revendedora">
+        <button class="btn btn-success w-100 py-2 fw-bold" onclick="verificarAcesso()">Conhecer as novidades 🛍️</button>
+        <div id="erro-login" class="text-danger mt-2 small" style="display:none;">Código incorreto.</div>
+    </div> 
+</div> 
+
+<div id="conteudo-principal" style="display:none;">
+    <div id="nome-revendedora-banner"></div>
+
+    <section class="hero-saboaria text-center" id="banner-principal">
+        <div class="px-3">
+            <h1 class="display-5 fw-bold">Camomila Sabonetes e Cosméticos Artesanais</h1>
+            <p class="lead small">Onde a natureza encontra o cuidado feito à mão. Sinta a pureza de um toque que respeita a sua pele.</p>
+        </div>
+    </section>
+    
+    <section class="secao-destaques">
+        <div class="container">
+            <h2 class="text-center mb-4" style="font-family: 'Playfair Display', serif; color: var(--verde-escuro);">
+                Novidades & Último Ciclo ✨
+            </h2>
+            <div class="row g-3 justify-content-center" id="vitrine-destaque">
+                </div>
+        </div>
+    </section>
+
+    <div class="container my-4">
+        <div class="d-flex justify-content-center flex-wrap gap-2" id="filtros">
+            <button class="btn btn-outline-secondary btn-filtro active" onclick="filtrar('todos')">Todos</button>
+            <button class="btn btn-outline-secondary btn-filtro" onclick="filtrar('RELAXANTE')">Relaxantes</button>
+            <button class="btn btn-outline-secondary btn-filtro" onclick="filtrar('ENERGIZANTE')">Energizantes</button>
+            <button class="btn btn-outline-secondary btn-filtro" onclick="filtrar('HIDRATANTE')">Hidratantes</button>
+            <button class="btn btn-outline-secondary btn-filtro" onclick="filtrar('MASSAGEADOR')">Massageadores</button>
+            <button class="btn btn-outline-secondary btn-filtro" onclick="filtrar('CLAREADOR')">Clareadores</button>
+            <button class="btn btn-outline-secondary btn-filtro" onclick="filtrar('CUIDADO ÍNTIMO')">Cuidado Íntimo</button>
+            <button class="btn btn-outline-secondary btn-filtro" onclick="filtrar('CUIDADO FACIAL')">Cuidado Facial</button>
+            <button class="btn btn-outline-secondary btn-filtro" onclick="filtrar('GELEIA DE BANHO')">Geléias de Banho</button>
+            <button class="btn btn-outline-secondary btn-filtro" onclick="filtrar('ESCALDA PÉS')">Escalda Pés</button>
+            <button class="btn btn-outline-secondary btn-filtro" onclick="filtrar('REFRESCA/HIDRATA')">Refresca/Hidrata</button>
+            
+            
+            <button class="btn btn-outline-secondary btn-filtro" onclick="filtrar('KIT')">Kits</button>
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <div id="mensagem-carregando" class="text-center py-5">
+            <div class="spinner-border text-success" role="status"></div>
+        </div>
+        <div class="row g-3" id="vitrine"></div>
+    </div>
+
+    <div class="carrinho-flutuante">
+        <button class="btn btn-dark shadow-lg d-flex align-items-center justify-content-center position-relative" onclick="abrirModalCarrinho()">
+            <i class="bi bi-bag-heart fs-3"></i>
+            <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+        </button>
+    </div>
+</div> 
+
+<div class="modal fade" id="modalDetalhes" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4 overflow-hidden">
+            <img id="detalhe-img" src="" class="img-fluid">
+            <div class="modal-body p-4">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <h4 id="detalhe-nome" class="fw-bold mb-0"></h4>
+                    <span id="detalhe-grama" class="badge bg-success"></span>
+                </div>
+                <p id="detalhe-descricao" class="text-muted small"></p>
+                <button id="btn-adicionar-modal" class="btn btn-success w-100 py-2 fw-bold rounded-pill">ADICIONAR AO PEDIDO</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalCarrinho" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="fw-bold">Seu Pedido</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="itens-carrinho" class="mb-4"></div>
+                <div class="bg-light p-3 rounded-3 mb-3">
+                    <input type="text" id="cliente-nome" name="cliente-nome" class="form-control mb-2" placeholder="Seu Nome" autocomplete="off">   
+                    <select id="pagamento-metodo" class="form-select">
+                        <option value="Pix">Pix</option>
+                        <option value="Cartão">Cartão de Débito</option>
+                        <option value="Cartão">Cartão de Crédito</option>
+                        <option value="Dinheiro">Dinheiro</option>
+                    </select>
+                </div>
+                <button class="btn btn-success w-100 py-3 fw-bold rounded-pill" onclick="finalizarNoWhats()">FINALIZAR NO WHATSAPP</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js?v=1.5"></script>
+</body>
+</html>
