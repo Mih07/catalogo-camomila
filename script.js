@@ -94,7 +94,21 @@ function verificarAcesso() {
 function renderizarProdutos(lista) {
     const v = document.getElementById('vitrine');
     const vDestaques = document.getElementById('vitrine-destaque');
+    const bannerPrincipal = document.getElementById('banner-principal');
+
     if (!v) return;
+
+    // 1. Busca o banner na lista
+    const banner = lista.find(p => p.nome.toUpperCase() === 'BANNER');
+    if (banner && banner.img && bannerPrincipal) {
+        bannerPrincipal.innerHTML = `
+            <div class="px-0">
+                <img src="${banner.img}" class="img-fluid" style="width: 100%; object-fit: cover;" alt="Banner Camomila">
+            </div>
+        `;
+    }
+    // 3. Filtra a lista para não mostrar o "BANNER" como produto na vitrine
+    const listaFiltrada = lista.filter(p => p.nome.toUpperCase() !== 'BANNER');
 
     const listaFiltrada = lista.filter(p => p.nome.toUpperCase() !== 'BANNER');
     const destaques = listaFiltrada.filter(p => p.statusCampanha !== '').sort((a, b) => {
@@ -221,6 +235,17 @@ function finalizarNoWhats() {
     let fone = revendedoraAtiva.whatsapp;
     if (!fone.startsWith('55')) fone = '55' + fone;
     window.open(`https://wa.me/${fone}?text=${encodeURIComponent(msg)}`, '_blank');
+    
+    carrinho = [];
+    atualizarCarrinhoUI();
+
+    bootstrap.Modal.getOrCreateInstance(
+        document.getElementById('modalCarrinho')
+    ).hide();
+
+    location.reload();
+    
 }
+
 
 inicializar();
