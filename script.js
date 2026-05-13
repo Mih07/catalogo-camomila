@@ -96,7 +96,7 @@ function renderizarProdutos(lista) {
     if (banner && banner.img && bannerPrincipal) {
         bannerPrincipal.innerHTML = `
             <div class="px-1 py-2" style="background:#f1f8f1; border-radius:0 0 8px 8px; border-bottom:1px solid #e1eee1;">
-                <img src="${banner.img}" class="img-fluid" style="width: 100%; height: 550px; object-fit: cover;" alt="Banner Camomila">
+                <img src="${banner.img}" class="img-fluid" style="width: 800px; height: 500px; object-fit: cover;" alt="Banner Camomila">
             </div>
         `;
     }
