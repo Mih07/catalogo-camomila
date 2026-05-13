@@ -1,4 +1,3 @@
-
 const BASE_ID = 'appLjEcnveJBepp0D';
 
 let produtos = [];
@@ -7,25 +6,23 @@ let carrinho = [];
 let revendedoraAtiva = null;
 
 async function inicializar() {
-    // 1. Pega o parâmetro da URL e limpa espaços
     const params = new URLSearchParams(window.location.search);
     const ref = params.get('ref') ? params.get('ref').trim().toUpperCase() : null;
     
     try {
         const [resProd, resRev] = await Promise.all([
-    fetch('/api/airtable?tabela=PRODUTOS').then(r => r.json()),
-    fetch('/api/airtable?tabela=REVENDEDORAS').then(r => r.json())
-]);
+            fetch('/api/airtable?tabela=PRODUTOS').then(r => r.json()),
+            fetch('/api/airtable?tabela=REVENDEDORAS').then(r => r.json())
+        ]);
 
-    console.log("PRODUTOS:", resProd);
-    console.log("REVENDEDORAS:", resRev);
+        console.log("PRODUTOS:", resProd);
+        console.log("REVENDEDORAS:", resRev);
 
-    if (resProd.error || resRev.error) {
-        console.error("Erro na API:", resProd.error || resRev.error);
-        return;
-    }
+        if (resProd.error || resRev.error) {
+            console.error("Erro na API:", resProd.error || resRev.error);
+            return;
+        }
 
-        // Mapeamento dos produtos...
         produtos = resProd.records.map(rec => ({
             id: rec.id,
             nome: rec.fields['Name'] || 'Produto',
@@ -38,24 +35,19 @@ async function inicializar() {
             statusCampanha: rec.fields['Lançamento'] || ''
         }));
 
-        // Mapeamento das revendedoras (Limpando qualquer espaço da planilha)
         revendedoras = resRev.records.map(rec => ({
             codigo: String(rec.fields['CÓDIGO'] || '').trim().toUpperCase(), 
             nome: rec.fields['NOME'] || '',
             whatsapp: String(rec.fields['PHONE NUMBER'] || '').replace(/\D/g, '')
         }));
+        
 
         renderizarProdutos(produtos);
 
-        // 2. Tenta o login automático
         if (ref) {
-            console.log("Tentando login com:", ref); // Isso aparecerá no F12 para teste
             const rev = revendedoras.find(r => r.codigo === ref);
             if (rev) {
-                console.log("Revendedora encontrada:", rev.nome);
                 liberarAcesso(rev.nome);
-            } else {
-                console.log("Código da URL não existe na planilha.");
             }
         }
 
@@ -95,10 +87,9 @@ function renderizarProdutos(lista) {
     const v = document.getElementById('vitrine');
     const vDestaques = document.getElementById('vitrine-destaque');
     const bannerPrincipal = document.getElementById('banner-principal');
-
     if (!v) return;
 
-    // 1. Busca o banner na lista
+    // 1. Busca e exibe o banner
     const banner = lista.find(p => p.nome.toUpperCase() === 'BANNER');
     if (banner && banner.img && bannerPrincipal) {
         bannerPrincipal.innerHTML = `
@@ -107,10 +98,11 @@ function renderizarProdutos(lista) {
             </div>
         `;
     }
-    // 3. Filtra a lista para não mostrar o "BANNER" como produto na vitrine
-    const listaFiltrada = lista.filter(p => p.nome.toUpperCase() !== 'BANNER');
 
+    // 2. Filtra a lista removendo o item BANNER
     const listaFiltrada = lista.filter(p => p.nome.toUpperCase() !== 'BANNER');
+    
+    // 3. Organiza destaques
     const destaques = listaFiltrada.filter(p => p.statusCampanha !== '').sort((a, b) => {
         const peso = (t) => {
             const low = t.toLowerCase();
@@ -177,7 +169,7 @@ function abrirDetalhes(id) {
 
 function filtrar(cat) {
     document.querySelectorAll('.btn-filtro').forEach(btn => btn.classList.remove('active'));
-    if (event) event.target.classList.add('active');
+    event.target.classList.add('active');
     renderizarProdutos(cat === 'todos' ? produtos : produtos.filter(p => p.categoria.toUpperCase() === cat.toUpperCase()));
 }
 
@@ -238,14 +230,8 @@ function finalizarNoWhats() {
     
     carrinho = [];
     atualizarCarrinhoUI();
-
-    bootstrap.Modal.getOrCreateInstance(
-        document.getElementById('modalCarrinho')
-    ).hide();
-
+    bootstrap.Modal.getOrCreateInstance(document.getElementById('modalCarrinho')).hide();
     location.reload();
-    
 }
-
 
 inicializar();
