@@ -95,8 +95,8 @@ function renderizarProdutos(lista) {
     const banner = lista.find(p => p.nome.toUpperCase() === 'BANNER');
     if (banner && banner.img && bannerPrincipal) {
         bannerPrincipal.innerHTML = `
-            <div class="px-1 py-2" style="background:#f1f8f1; border-radius:0 0 8px 8px; border-bottom:1px solid #e1eee1;">
-                <img src="${banner.img}" class="img-fluid" style="width: 800px; height: 400px; object-fit: cover;" alt="Banner Camomila">
+            <div class="px-0 m-0">
+                <img src="${banner.img}" class="img-fluid w-100" style=" height: 400px; object-fit: cover; display: block;" alt="Banner Camomila">
             </div>
         `;
     }
