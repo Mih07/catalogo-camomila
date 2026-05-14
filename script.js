@@ -249,4 +249,6 @@ function abrirDetalhes(id) {
     new bootstrap.Modal(document.getElementById('modalDetalhes')).show();
 }
 
-inicializar();
+window.addEventListener('DOMContentLoaded', () => {
+    inicializar();
+});
