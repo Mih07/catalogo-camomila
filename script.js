@@ -23,6 +23,7 @@ function carregarBanner() {
 function verificarParametroRevendedora() {
 
     const params = new URLSearchParams(window.location.search);
+
     const codigo = params.get('ref');
 
     if (!codigo) return;
@@ -35,16 +36,9 @@ function verificarParametroRevendedora() {
 
         revendedoraAtiva = rev;
 
-        const telaBloqueio = document.getElementById('tela-bloqueio');
-        const conteudoPrincipal = document.getElementById('conteudo-principal');
+        document.getElementById('tela-bloqueio').style.display = 'none';
+        document.getElementById('conteudo-principal').style.display = 'block';
 
-        if (telaBloqueio) {
-            telaBloqueio.style.display = 'none';
-        }
-
-        if (conteudoPrincipal) {
-            conteudoPrincipal.style.display = 'block';
-        }
         const banner = document.getElementById('nome-revendedora-banner');
 
         if (banner) {
@@ -57,6 +51,7 @@ function verificarParametroRevendedora() {
         }
     }
 }
+
 // --- 2. FUNÇÃO DE INICIALIZAÇÃO ---
 function inicializar() {
     carregarBanner();
