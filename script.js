@@ -37,7 +37,16 @@ function renderizarVitrine() {
     const htmlCard = (p) => `
         <div class="col-6 col-md-4 col-lg-3 mb-3">
             <div class="card card-produto shadow-sm h-100 border-0 rounded-4 overflow-hidden">
-                ${p.statusCampanha ? `<span class="badge-especial">${p.statusCampanha}</span>` : ''}
+                ${p.statusCampanha ? `
+                    <span class="badge-especial ${
+                        p.statusCampanha === 'PROMOÇÃO'
+                            ? 'badge-promocao'
+                            : 'badge-ultimo-ciclo'
+                    }">
+                        ${p.statusCampanha}
+                    </span>
+                ` : ''}
+                
                 <div class="img-container">
                     <img src="${p.img}" class="card-img-top" onclick="abrirDetalhes('${p.id}')" style="cursor:pointer">
                 </div>
@@ -50,7 +59,22 @@ function renderizarVitrine() {
             </div>
         </div>`;
 
-    if (vDestaque) vDestaque.innerHTML = produtos.filter(p => p.destaque).map(htmlCard).join('');
+    if (vDestaque) {
+
+    const destaquesOrdenados = produtos
+        .filter(p => p.destaque)
+        .sort((a, b) => {
+
+            const ordem = {
+                'PROMOÇÃO': 1,
+                'ÚLTIMO CICLO': 2
+            };
+
+            return (ordem[a.statusCampanha] || 99) - (ordem[b.statusCampanha] || 99);
+        });
+
+    vDestaque.innerHTML = destaquesOrdenados.map(htmlCard).join('');
+}
     if (vGeral) vGeral.innerHTML = produtos
         .filter(p => p.categoria !== 'BANNER')
         .map(htmlCard)

@@ -199,7 +199,15 @@ h1 { font-family: 'Playfair Display', serif; }
     z-index: 2;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+.badge-promocao {
+    background: #dc3545;
+    color: white;
+}
 
+.badge-ultimo-ciclo {
+    background: #ff9800;
+    color: white;
+}
 /* Card de Lançamento com Borda Suave */
 .card-lancamento {
     border: 2px solid var(--cor-primaria) !important;

@@ -29,11 +29,11 @@ const produtos = [
         nome: 'Sabonete de Açafrão da Terra e Barbatimão **trata foliculite**',
         preco: 18.00,
         precoOriginal: 22.00,
-        destaque: false,
+        destaque: true,
         img: 'https://v5.airtableusercontent.com/v3/u/53/53/1778803200000/r-m1cn6z7az7VI5Pv4qQgA/JxC86qpIOPTf_s8tKDOSTdmkrm1rfSUYrb-OAsBTVoHln9XVzsmGD0CHpo-ZRy1ha8b46C1shoXbwxsQOFVowyc49-bFHhvTZaT2lq7wXoRdKtnJQat-EBTmvC72C1d4-9GmBGWzuMETqL0PuwcA4w/LBwFIALMMR0YfhXrGw683f2eGbWzkHkKQSpqQG4hzeY',
         grama: '110g',
         categoria: 'CUIDADO ÍNTIMO',
-        statusCampanha: '',
+        statusCampanha: 'PROMOÇÃO',
         descricao: `Benefícios:
         Auxilia na redução do crescimento dos pelos com uso contínuo.
         Controla a oleosidade e previne cravos e espinhas.
@@ -49,6 +49,7 @@ const produtos = [
         Modo de usar:
         Uso diário. Aplique na região desejada, deixe agir por até 5 minutos e enxágue.`
     },
+
     {
         id: '02',
         nome: 'Sabonete de Maracujá Azedo',
@@ -130,11 +131,11 @@ const produtos = [
         nome: 'Sabonete de Mel e Própolis',
         preco: 18.50,
         precoOriginal: 18.50,
-        destaque: false,
+        destaque: true,
         img: 'https://v5.airtableusercontent.com/v3/u/53/53/1778803200000/If_g7Nde3RKfFsiCXZLV8w/u3A4mBXzVkcfj-8IUFxoQv6qlvOGYJ-E1fFLEJ_SzYizmA1PcQxhAgYw_0opxpieSqqNh41IFBOKzEDxSWG2c8b7dHmKAcmnGACTGjYb1SzCo2WeGgPRExvqQ98eH_6U_Xa83Pmg24W7q_d-CBakLQ/HP1aSfcoTVRs4QCNQR-O7kYEJfJf35r1eUAdQqLtjjU',
         grama: '70g',
         categoria: 'HIDRATANTE',
-        statusCampanha: '',
+        statusCampanha: 'ÚLTIMO CICLO',
         descricao: `Proporciona hidratação profunda, deixando a pele macia e nutrida. Possui ação antisséptica, antibacteriana e anti-inflamatória, ajudando na cicatrização, no alívio de irritações e na prevenção do envelhecimento precoce graças aos antioxidantes naturais. O uso regular promove pele mais suave, uniforme e luminosa.` },
 
     {
@@ -298,11 +299,11 @@ const produtos = [
         nome: 'Sabonete de Amora - Hidratante e Calmante', 
         preco: 18.50, 
         precoOriginal: 18.50, 
-        destaque: false, 
+        destaque: true, 
         img: 'https://v5.airtableusercontent.com/v3/u/53/53/1778803200000/0t6KIaIy_mcI_HCZiVao_g/JlhKMwrO2bBPnDsnMbmswl13SuA1THtSelmBtH34f7ewv5FOf8LTjIjbjd923gL-181CHuj6fTpqHj8iRi2kT5UpfsHjjIxpYvu0h2jtaYpeNcJuTECIQD8oIYa145XyupqfQkRaUXh1BJw_6udBmA/dzxUvSOr3e8Djfex82TypKNhyCDA00Q0TvwaSDOQltg', 
         grama: '80g', 
         categoria: 'REFRESCA/HIDRATA', 
-        statusCampanha: '', 
+        statusCampanha: 'ÚLTIMO CICLO', 
         descricao: `Delicado e envolvente, o sabonete de amora proporciona uma limpeza suave enquanto deixa a pele macia, hidratada e levemente perfumada. Rico em propriedades antioxidantes, ajuda a proteger a pele contra os danos do dia a dia, promovendo um aspecto mais saudável e revitalizado.
         Sua fragrância doce e marcante transforma o momento do banho em uma experiência relaxante e prazerosa. Ideal para todos os tipos de pele.` },
 
@@ -335,11 +336,11 @@ const produtos = [
         nome: 'Sabonete de Sal grosso e Arruda', 
         preco: 18.50, 
         precoOriginal: 18.50, 
-        destaque: false, 
+        destaque: true, 
         img: 'https://v5.airtableusercontent.com/v3/u/53/53/1778803200000/Nod0kbKL7CwtvfZMJx9B4g/aRfmKQX0HCeT2HWq6CYfYPMK7J_GNhUCLf22mTi_rKsuYYfEyL2cl8Ln5cR-EFY1iyMRNv2zmhEGIgM6K2w21MMQxF9Q4VkaeNJ28gw1ckNaDu4NmxohYAztakhHi0KDZWpp991iCnjap5TTJRQQFg/UQyZ6TlkP-_kOnPL7g3cOnlS8V4ESpiCGquXTSv-hEA', 
         grama: '100g', 
         categoria: 'ENERGIZANTE', 
-        statusCampanha: '', 
+        statusCampanha: 'ÚLTIMO CICLO', 
         descricao: `O sabonete de sal grosso e arruda é indicado para limpeza energética, proteção e equilíbrio emocional. O sal grosso ajuda a purificar e renovar as energias, enquanto a arruda é conhecida por afastar influências negativas, como inveja e mau-olhado.
 
         Além da limpeza espiritual, o uso do sabonete promove sensação de bem-estar, leveza e autocuidado, podendo ser incorporado como um ritual de proteção pessoal durante o banho.
@@ -518,11 +519,11 @@ const produtos = [
         nome: 'Sabonete Massageador de Manga', 
         preco: 22.00, 
         precoOriginal: 22.00, 
-        destaque: false, 
+        destaque: true, 
         img: 'https://v5.airtableusercontent.com/v3/u/53/53/1778803200000/HC9xSqRRpoewB-fBPvP2AA/BGnDsjUCy2s7CsRqNI_OwgRHYaV190BU-jC-QbWFaCdIaJAZi_yp-Qn9tFsFaU7ZTt-0QMsswG0mFJ1PGrEFAhHKE1kiY8j6b__vq-_fjcgefoiZ3CbuScOWjqUeXpcGgMJRqXBUOJwASHD2TEy3Bg/Pvd3Fh_bKp9N10DlOfiY9g1TEGI2ZplcPX8p0bF2eEE', 
         grama: '130g', 
         categoria: 'MASSAGEADOR', 
-        statusCampanha: '', 
+        statusCampanha: 'ÚLTIMO CICLO', 
         descricao: `Produzido com base glicerinada de alta qualidade, promove limpeza suave, hidratação e nutrição, deixando a pele macia, aveludada e delicadamente perfumada.
 
         ✨ Seu formato massageador estimula a circulação, proporcionando uma experiência relaxante e revitalizante durante o banho.
@@ -568,11 +569,11 @@ const produtos = [
         nome: 'Sabonete Massageador de Pitaya', 
         preco: 22.00, 
         precoOriginal: 22.00, 
-        destaque: false, 
+        destaque: true, 
         img: 'https://v5.airtableusercontent.com/v3/u/53/53/1778803200000/u5bUiOtXi800xI3cpkvvBw/esuyEMMtiXfCFPj0_-zfzqepqxfqTq94sCJqjRP8PR68wK8LR1AfYM2Nn1H2pE21I9HpCsEgW4DYWChp7jhlRbbhRTq7KVDws8vWUWyE_tpJNE0EOKcgYYHnXob6M2XXjLOtvf7e-SdMew33EJwvNQ/L56NEtD5BPZBXH5X9nKFjGr1NxYiKfvdKsNwEXvN7dg', 
         grama: '130g', 
         categoria: 'MASSAGEADOR', 
-        statusCampanha: '', 
+        statusCampanha: 'ÚLTIMO CICLO', 
         descricao: `Nosso sabonete massageador de pitaya é produzido com base glicerinada de alta qualidade, trazendo um aroma suave, adocicado e exótico. Seu formato massageador proporciona uma experiência diferenciada no banho, estimulando a circulação enquanto limpa e cuida da pele.
         Enriquecido com extratos naturais, promove uma limpeza delicada, hidratação profunda e ação revitalizante, deixando a pele macia, perfumada e com um toque sedoso. Ideal para quem busca um momento de autocuidado com leveza e frescor.`},
 
