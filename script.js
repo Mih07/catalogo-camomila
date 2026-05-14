@@ -20,12 +20,47 @@ function carregarBanner() {
     }
 }
 
+function verificarParametroRevendedora() {
+
+    const params = new URLSearchParams(window.location.search);
+
+    const codigo = params.get('ref');
+
+    if (!codigo) return;
+
+    const rev = revendedoras.find(
+        r => r.codigo.trim().toUpperCase() === codigo.trim().toUpperCase()
+    );
+
+    if (rev) {
+
+        revendedoraAtiva = rev;
+
+        document.getElementById('tela-bloqueio').style.display = 'none';
+
+        document.getElementById('conteudo-principal').style.display = 'block';
+
+        const banner = document.getElementById('nome-revendedora-banner');
+
+        if (banner) {
+            banner.innerHTML = `
+                <div class="banner-camomila text-center fw-bold">
+                    <i class="bi bi-person-check"></i>
+                    Atendida por: ${rev.nome}
+                </div>
+            `;
+        }
+    }
+}
 // --- 2. FUNÇÃO DE INICIALIZAÇÃO ---
 function inicializar() {
     carregarBanner();
     renderizarVitrine();
     atualizarCarrinhoUI();
+    verificarParametroRevendedora();
+
     const loader = document.getElementById('mensagem-carregando');
+
     if (loader) loader.style.display = 'none';
 }
 
