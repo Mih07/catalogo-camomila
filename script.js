@@ -23,7 +23,6 @@ function carregarBanner() {
 function verificarParametroRevendedora() {
 
     const params = new URLSearchParams(window.location.search);
-
     const codigo = params.get('ref');
 
     if (!codigo) return;
@@ -36,10 +35,16 @@ function verificarParametroRevendedora() {
 
         revendedoraAtiva = rev;
 
-        document.getElementById('tela-bloqueio').style.display = 'none';
+        const telaBloqueio = document.getElementById('tela-bloqueio');
+        const conteudoPrincipal = document.getElementById('conteudo-principal');
 
-        document.getElementById('conteudo-principal').style.display = 'block';
+        if (telaBloqueio) {
+            telaBloqueio.style.display = 'none';
+        }
 
+        if (conteudoPrincipal) {
+            conteudoPrincipal.style.display = 'block';
+        }
         const banner = document.getElementById('nome-revendedora-banner');
 
         if (banner) {
