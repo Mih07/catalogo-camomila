@@ -30,7 +30,7 @@ const produtos = [
         preco: 18.00,
         precoOriginal: 22.00,
         destaque: true,
-        img: 'https://v5.airtableusercontent.com/v3/u/53/53/1778803200000/r-m1cn6z7az7VI5Pv4qQgA/JxC86qpIOPTf_s8tKDOSTdmkrm1rfSUYrb-OAsBTVoHln9XVzsmGD0CHpo-ZRy1ha8b46C1shoXbwxsQOFVowyc49-bFHhvTZaT2lq7wXoRdKtnJQat-EBTmvC72C1d4-9GmBGWzuMETqL0PuwcA4w/LBwFIALMMR0YfhXrGw683f2eGbWzkHkKQSpqQG4hzeY',
+        img: 'https://v5.airtableusercontent.com/v3/u/53/53/1778817600000/HsFr1u6UjvrW3D5GD9zxdg/8Sd0c7Zx-4z393tMSknGb5caoUUi45KSlgHgphYlFrCZVc5D6Sqs766bIzyolOzHGWPvU-VUpaoBLeTk-otbJ0e26qBDe_mdkDm5BsHv9WdB7nOrUZn9AeaLy-ARWU9jtv1F2VDv_hD7l6q4GRrKHw/epwXEiAukRkcTXDTzWcgBx_SE7zNiLwIxnDP8IDWANw',
         grama: '110g',
         categoria: 'CUIDADO ÍNTIMO',
         statusCampanha: 'PROMOÇÃO',
