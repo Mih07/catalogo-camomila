@@ -74,7 +74,7 @@ const produtos = [
         preco: 18.50,
         precoOriginal: 18.50,
         destaque: false,
-        img: 'img/2.png',
+        img: 'img/3.png',
         grama: '90g',
         categoria: 'REFRESCA/HIDRATA',
         statusCampanha: '',
