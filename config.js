@@ -2,7 +2,7 @@
 
 // Lista de Revendedoras para fácil alteração
 const revendedoras = [
-    { codigo: 'JUELISIA2026', nome: 'Juelisia Almeida', whatsapp: '5511999999999' },
+    { codigo: 'JUELISIA2026', nome: 'Juelisia Almeida', whatsapp: '5511941064847' },
     { codigo: 'MICHELE', nome: 'Michele Santo', whatsapp: '5511971128269' },
     { codigo: 'LUCIA2026', nome: 'Lucia Inês de Souza', whatsapp: '5511966255477' },
     { codigo: 'GEOVANA2026', nome: 'Geovana Lima', whatsapp: '5511942398376' },
