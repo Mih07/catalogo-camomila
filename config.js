@@ -5,8 +5,6 @@ const revendedoras = [
     { codigo: 'JUELISIA2026', nome: 'Juelisia Almeida', whatsapp: '5511941064847' },
     { codigo: 'MICHELE', nome: 'Michele Santo', whatsapp: '5511971128269' },
     { codigo: 'LUCIA2026', nome: 'Lucia Inês de Souza', whatsapp: '5511966255477' },
-    { codigo: 'GEOVANA2026', nome: 'Geovana Lima', whatsapp: '5511942398376' },
-    { codigo: 'GISLENE2026', nome: 'Gislene Borges', whatsapp: '5511961875882' },
     { codigo: 'THAYNA2026', nome: 'Thayna Souza', whatsapp: '5511952344228' }
 ];
 
@@ -521,7 +519,7 @@ const produtos = [
         descricao: `Transforme seu banho em um momento de cuidado e prazer! Nossa Geléia de banho possui uma textura única, que limpa suavemente a pele enquanto proporciona uma sensação refrescante e hidratante.
         Enriquecida com ingredientes selecionados, ela forma uma espuma delicada que deixa a pele macia, perfumada e revitalizada. Ideal para todos os tipos de pele, trazendo leveza e um toque especial à sua rotina de autocuidado.` },
 
-    { 
+    /*{ 
         id: '33', 
         nome: 'Sabonete Massageador de Manga', 
         preco: 22.00, 
@@ -613,7 +611,7 @@ const produtos = [
         categoria: 'MASSAGEADOR', 
         statusCampanha: '', 
         descricao: `Nosso sabonete massageador de maçã verde é produzido com base glicerinada de alta qualidade, trazendo um aroma frutal fresco e levemente adocicado. Seu formato massageador proporciona uma experiência única no banho, estimulando a circulação enquanto limpa e cuida da pele.
-        Enriquecido com extratos naturais, promove uma limpeza suave, hidratação profunda e ação revitalizante, deixando a pele macia, perfumada e com sensação refrescante. Ideal para transformar o banho em um momento relaxante e energizante ao mesmo tempo` },
+        Enriquecido com extratos naturais, promove uma limpeza suave, hidratação profunda e ação revitalizante, deixando a pele macia, perfumada e com sensação refrescante. Ideal para transformar o banho em um momento relaxante e energizante ao mesmo tempo` },*/
 
 
     { 
@@ -640,7 +638,7 @@ const produtos = [
         statusCampanha: '', 
         descricao: `✨ Escalda-Pés de Camomila – Calmante e Relaxante  Proporcione um momento de cuidado e bem-estar com o escalda-pés de camomila. Enriquecido com sal grosso e notas suaves de lavanda, ele ajuda a aliviar o cansaço dos pés, promove relaxamento profundo e deixa uma sensação deliciosa de leveza e conforto após um dia intenso. Ideal para seu ritual de spa em casa. 🌿💛` },
 
-    { 
+    /*{ 
         id: '41', 
         nome: 'Kit Geléia de Banho de Manga', 
         preco: 59.90, 
@@ -720,7 +718,7 @@ const produtos = [
         * Aromas frutais refrescantes e energizantes
         * Ideal para transformar o banho em um momento de autocuidado
 
-        💚 Pele renovada, perfumada e com sensação de bem-estar.`},
+        💚 Pele renovada, perfumada e com sensação de bem-estar.`},*/
 
     { 
         id: '47', 
