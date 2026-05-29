@@ -166,11 +166,11 @@ const produtos = [
         nome: 'Sabonete de Capim Limão',
         preco: 15.00,
         precoOriginal: 18.50,
-        destaque: false,
+        destaque: true,
         img: 'img/9.png',
         grama: '100g',
         categoria: 'RELAXANTE',
-        statusCampanha: '',
+        statusCampanha: 'PROMOÇÃO',
         descricao: `Poderoso calmante natural, proporciona ações antissépticas e relaxantes. Além do cheirinho maravilhoso e fresco. Seu aroma delicado proporciona sensação de frescor duradoura no corpo. O extrato de Aloe Vera presente no sabonete possui propriedades antioxidantes, adstringentes e antissépticas, além de proporcionar muita hidratação.` },
 
 
@@ -211,11 +211,11 @@ const produtos = [
         nome: 'Sabonete Ametista de Amora',
         preco: 28.00,
         precoOriginal: 28.00,
-        destaque: false,
+        destaque: true,
         img: 'img/12.png',
         grama: '100g',
         categoria: 'ENERGIZANTE',
-        statusCampanha: '',
+        statusCampanha: 'PROMOÇÃO',
         descricao: `Este sabonete exclusivo combina os benefícios revitalizantes da ametista com a fragrância irresistível da amora, proporcionando uma experiência de banho única e envolvente.
         Ideal para uso diário no banho, nosso Sabonete de Ametista é perfeito para todos os tipos de pele. Utilize-o para limpar e energizar seu corpo, deixando sua pele suave, perfumada e revigorada.` },
 
