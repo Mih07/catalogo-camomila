@@ -3,9 +3,7 @@
 // Lista de Revendedoras para fácil alteração
 const revendedoras = [
     { codigo: 'JUELISIA2026', nome: 'Juelisia Almeida', whatsapp: '5511941064847' },
-    { codigo: 'MICHELE', nome: 'Michele Santo', whatsapp: '5511971128269' },
-    { codigo: 'LUCIA2026', nome: 'Lucia Inês de Souza', whatsapp: '5511966255477' },
-    { codigo: 'THAYNA2026', nome: 'Thayna Souza', whatsapp: '5511952344228' }
+    { codigo: 'MICHELE', nome: 'Michele Santo', whatsapp: '5511971128269' }
 ];
 
 // Lista de Produtos
@@ -127,7 +125,7 @@ const produtos = [
     {
         id: '06',
         nome: 'Sabonete de Mel e Própolis',
-        preco: 18.50,
+        preco: 15.00,
         precoOriginal: 18.50,
         destaque: true,
         img: 'img/6.png',
@@ -166,7 +164,7 @@ const produtos = [
     {
         id: '09',
         nome: 'Sabonete de Capim Limão',
-        preco: 18.50,
+        preco: 15.00,
         precoOriginal: 18.50,
         destaque: false,
         img: 'img/9.png',
@@ -301,7 +299,7 @@ const produtos = [
     { 
         id: '17',
         nome: 'Sabonete de Amora - Hidratante e Calmante', 
-        preco: 18.50, 
+        preco: 9.90, 
         precoOriginal: 18.50, 
         destaque: true, 
         img: 'img/17.png', 
@@ -782,7 +780,7 @@ const produtos = [
         •	Aroma suave e relaxante
         •	Perfeito para presentear ou para momentos de autocuidado` },    
 
-    { 
+    /*{ 
         id: '50', 
         nome: 'Esferas Enfervescentes Artesanais ', 
         preco: 20.00, 
@@ -806,7 +804,7 @@ const produtos = [
         • Produto artesanal, feito com carinho
 
         💧 Modo de uso:
-        Coloque a esfera em uma bacia ou banheira com água morna e aproveite o momento!` }, 
+        Coloque a esfera em uma bacia ou banheira com água morna e aproveite o momento!` }, */
 
     { 
         id: '51', 
