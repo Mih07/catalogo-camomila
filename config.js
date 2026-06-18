@@ -122,31 +122,7 @@ const produtos = [
         benéficos, esse sabonete oferece uma experiência
         única de limpeza e hidratação intensa.` },
 
-    {
-        id: '06',
-        nome: 'Sabonete de Mel e Própolis',
-        preco: 15.00,
-        precoOriginal: 18.50,
-        destaque: true,
-        img: 'img/6.png',
-        grama: '70g',
-        categoria: 'HIDRATANTE',
-        statusCampanha: 'ÚLTIMO CICLO',
-        descricao: `Proporciona hidratação profunda, deixando a pele macia e nutrida. Possui ação antisséptica, antibacteriana e anti-inflamatória, ajudando na cicatrização, no alívio de irritações e na prevenção do envelhecimento precoce graças aos antioxidantes naturais. O uso regular promove pele mais suave, uniforme e luminosa.` },
-
-    {
-        id: '07',
-        nome: 'Sabonete de Coco e Vanilla',
-        preco: 18.50,
-        precoOriginal: 18.50,
-        destaque: false,
-        img: 'img/7.png',
-        grama: '100g',
-        categoria: 'HIDRATANTE',
-        statusCampanha: '',
-        descricao: `Promove limpeza profunda e suave, sem agredir a pele, graças à glicerina natural. Rico em óleo de coco, oferece hidratação intensa, nutrição e toque macio, além de ajudar no controle da oleosidade. Possui ação antibacteriana e calmante, sendo hipoalergênico e ideal para peles sensíveis, mistas a oleosas, podendo também ser usado para bebês e roupas delicadas.
-    ` },
-
+   
     {
         id: '08',
         nome: 'Sabonete Amazônia com bucha vegetal',
@@ -158,8 +134,8 @@ const produtos = [
         categoria: 'MASSAGEADOR',
         statusCampanha: '',
         descricao: `Sabonete Artesanal Amazônia com Bucha Vegetal
-    Sabonete natural que proporciona limpeza profunda e esfoliação suave em um só produto. Possui bucha vegetal incorporada, que ajuda na remoção de células mortas, estimula a circulação e deixa a pele macia, renovada e revitalizada.
-    Com aroma refrescante e fórmula hidratante, é ideal para transformar o banho em um momento prático de cuidado e bem-estar diário. 🌿` },
+        Sabonete natural que proporciona limpeza profunda e esfoliação suave em um só produto. Possui bucha vegetal incorporada, que ajuda na remoção de células mortas, estimula a circulação e deixa a pele macia, renovada e revitalizada.
+        Com aroma refrescante e fórmula hidratante, é ideal para transformar o banho em um momento prático de cuidado e bem-estar diário. 🌿` },
 
     {
         id: '09',
@@ -297,19 +273,6 @@ const produtos = [
 
 
     { 
-        id: '17',
-        nome: 'Sabonete de Amora - Hidratante e Calmante', 
-        preco: 9.90, 
-        precoOriginal: 18.50, 
-        destaque: true, 
-        img: 'img/17.png', 
-        grama: '80g', 
-        categoria: 'REFRESCA/HIDRATA', 
-        statusCampanha: 'ÚLTIMO CICLO', 
-        descricao: `Delicado e envolvente, o sabonete de amora proporciona uma limpeza suave enquanto deixa a pele macia, hidratada e levemente perfumada. Rico em propriedades antioxidantes, ajuda a proteger a pele contra os danos do dia a dia, promovendo um aspecto mais saudável e revitalizado.
-        Sua fragrância doce e marcante transforma o momento do banho em uma experiência relaxante e prazerosa. Ideal para todos os tipos de pele.` },
-
-    { 
         id: '18',
         nome: 'Sabonete de Dolomita - Clareador de manchas', 
         preco: 18.50, 
@@ -333,24 +296,6 @@ const produtos = [
         statusCampanha: '', 
         descricao: `Perfeito para renovar as energias e cuidar da pele, o sabonete de sal grosso e alecrim promove uma limpeza profunda e revitalizante. O sal grosso auxilia na esfoliação suave, removendo impurezas e células mortas, enquanto o alecrim possui propriedades estimulantes e refrescantes.
         Deixa a pele mais macia, purificada e com uma sensação única de frescor e bem-estar. Ideal para incluir no seu momento de autocuidado e equilíbrio.                                                                                                 Indicado para uso de 2 a 3 vezes por semana, ajudando a renovar a pele e proporcionar bem-estar e frescor. 🌿` },
-
-    { 
-        id: '20', 
-        nome: 'Sabonete de Sal grosso e Arruda', 
-        preco: 18.50, 
-        precoOriginal: 18.50, 
-        destaque: true, 
-        img: 'img/20.png', 
-        grama: '100g', 
-        categoria: 'ENERGIZANTE', 
-        statusCampanha: 'ÚLTIMO CICLO', 
-        descricao: `O sabonete de sal grosso e arruda é indicado para limpeza energética, proteção e equilíbrio emocional. O sal grosso ajuda a purificar e renovar as energias, enquanto a arruda é conhecida por afastar influências negativas, como inveja e mau-olhado.
-
-        Além da limpeza espiritual, o uso do sabonete promove sensação de bem-estar, leveza e autocuidado, podendo ser incorporado como um ritual de proteção pessoal durante o banho.
-
-        👉 Como usar: recomenda-se utilizar 1 a 2 vezes por semana, pois o uso diário pode ser excessivo e interferir no equilíbrio das energias.
-
-        ✨ Ideal para quem busca renovação, proteção e harmonia no dia a dia.` },
 
     { 
         id: '21', 
